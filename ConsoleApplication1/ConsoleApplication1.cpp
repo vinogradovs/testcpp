@@ -29,6 +29,7 @@ int getValueFromArray(int *array, int len, int index) {
 
 #define BIT_READ 0x0001 // 00000001
 #define BIT_WRITE 0x0010 // 00010000
+int MAX_SIZE = 10;
 
 unsigned int mask = BIT_READ & BIT_WRITE; /* intended to use "|" */
 
@@ -45,6 +46,30 @@ return 1;
 
 // otherwise return 0 (false)
 return 0;
+}
+
+char * copy_input(char *user_supplied_string){
+int i, dst_index;
+char *dst_buf = (char*)malloc(4*sizeof(char) * MAX_SIZE);
+if ( MAX_SIZE <= strlen(user_supplied_string) ){
+printf("%s","user string too long, die evil hacker!");
+}
+dst_index = 0;
+for ( i = 0; i < strlen(user_supplied_string); i++ ){
+if( '&' == user_supplied_string[i] ){
+dst_buf[dst_index++] = '&';
+dst_buf[dst_index++] = 'a';
+dst_buf[dst_index++] = 'm';
+dst_buf[dst_index++] = 'p';
+dst_buf[dst_index++] = ';';
+}
+else if ('<' == user_supplied_string[i] ){
+
+/* encode to &lt; */ 
+}
+else dst_buf[dst_index++] = user_supplied_string[i];
+}
+return dst_buf;
 }
 
 int main()
