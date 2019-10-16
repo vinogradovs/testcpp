@@ -4,22 +4,6 @@
 #include "stdafx.h"
 #include <iostream>
 using namespace std;
-
-int main()
-{
-	cout << "Hello, world, from Visual C++!" << endl;
-	int arr[] = { 1,2,3,4,5 };
-	printf("arr [0] is %d\n", arr[0]);
-
-	// arr[10] is out of bound 
-	printf("arr[10] is %d\n", arr[10]);
-	
-	return 0;
-	
-	
-    
-}
-
 int getValueFromArray(int *array, int len, int index) {
 
 	int value;
@@ -42,3 +26,44 @@ int getValueFromArray(int *array, int len, int index) {
 
 	return value;
 }
+
+#define BIT_READ 0x0001 // 00000001
+#define BIT_WRITE 0x0010 // 00010000
+
+unsigned int mask = BIT_READ & BIT_WRITE; /* intended to use "|" */
+
+// using "&", mask = 00000000
+// using "|", mask = 00010001
+
+// determine if user has read and write access
+int hasReadWriteAccess(unsigned int userMask) {
+// if the userMask has read and write bits set
+// then return 1 (true)
+if (userMask & mask) {
+return 1;
+}
+
+// otherwise return 0 (false)
+return 0;
+}
+
+int main()
+{
+	cout << "Hello, world, from Visual C++!" << endl;
+	int arr[] = { 1,2,3,4,5 };
+	printf("arr [0] is %d\n", arr[0]);
+
+	// arr[10] is out of bound 
+	printf("arr[10] is %d\n", arr[10]);
+	char str[20];
+strcat(str, "hello world");
+printf("%s", str);
+	
+	
+	
+	int d = getValueFromArray(arr, 20, 30);
+	return 0;
+    
+}
+
+
