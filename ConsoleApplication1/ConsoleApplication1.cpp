@@ -3,6 +3,11 @@
 
 #include "stdafx.h"
 #include <iostream>
+void func1(void)
+{
+	printf("\nIn func1");
+}
+
 using namespace std;
 int getValueFromArray(int *array, int len, int index) {
 
@@ -74,6 +79,9 @@ return dst_buf;
 
 int main()
 {
+	func1();
+#pragma deprecated(func1)
+	func1();   // C4995
 	cout << "Hello, world, from Visual C++!" << endl;
 	int arr[] = { 1,2,3,4,5 };
 	printf("arr [0] is %d\n", arr[0]);
